@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Protegiendo los mares</title>
+ 
+<style>
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+ 
+h1 {
+    margin-top: 20px;
+}
+ 
+.datos, .mensaje, .botones {
+    margin-top: 20px;
+}
+ 
+button {
+    width: 180px;
+    height: 40px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+ 
+/* HOVER BOTONES */
+button:hover {
+    background-color: #444;
+    color: white;
+}
+ 
+/* MENSAJE ANIMADO */
+.animado {
+    position: relative;
+    animation: mover 5s infinite alternate;
+}
+ 
+@keyframes mover {
+    from { left: -100px; }
+    to { left: 100px; }
+}
+ 
+/* SECCIONES */
+section {
+    display: none;
+    margin-top: 40px;
+    animation: fade 0.5s ease;
+}
+ 
+.activa {
+    display: block;
+}
+ 
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+ 
+/* IMAGEN INICIO */
+.inicio-img {
+    width: 400px;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+ 
+/* IMÁGENES DE INFORMACIÓN */
+.info-img {
+    width: 350px;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 0 15px rgba(255,255,255,0.2);
+    transition: 0.3s;
+}
+ 
+.info-img:hover {
+    transform: scale(1.03);
+}
+ 
+/* CARRUSEL */
+.principal {
+    position: relative;
+    margin: 30px 0;
+}
+ 
+.principal img {
+    width: 600px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+ 
+.boton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    background: rgba(0,0,0,0.7);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 10px;
+    width: auto;
+    height: auto;
+}
+ 
+.izquierda {
+    left: -60px;
+}
+ 
+.derecha {
+    right: -60px;
+}
+ 
+/* GALERÍA */
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+ 
+.galeria img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+ 
+.galeria img:hover {
+    transform: scale(1.08);
+}
+ 
+/* LIGHTBOX */
+.lightbox {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    top: 0;
+    left: 0;
+ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+}
+ 
+.lightbox.activo {
+    opacity: 1;
+    visibility: visible;
+}
+ 
+.lightbox img {
+    max-width: 80%;
+    max-height: 80%;
+    transform: scale(0.8);
+    transition: 0.5s;
+}
+ 
+.lightbox.activo img {
+    transform: scale(1);
+}
+ 
+.cerrar {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 30px;
+    cursor: pointer;
+}
+ 
+/* RESPONSIVO */
+@media (max-width: 800px) {
+ 
+    .galeria {
+        grid-template-columns: repeat(2, 1fr);
+    }
+ 
+    .principal img {
+        width: 90%;
+        height: auto;
+    }
+ 
+    .inicio-img,
+    .info-img {
+        width: 80%;
+    }
+}
+ 
+@media (max-width: 500px) {
+ 
+    .galeria {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+ 
+<body>
+ 
+<h1>Protegiendo los mares</h1>
+ 
+<div class="datos">
+<p>Integrantes: Daniel García González - Izel González Virgilio - Polet Luna Migoni - Natalia Jimenez Alvarado - Ana Paula Flores Arroyo</p>
+ 
+<p>Campus: UVM Lomas Verdes</p>
+ 
+<p>Docente: Patricia Hernández Carrillo</p>
+</div>
+ 
+<div class="mensaje">
+<p class="animado">¡Bienvenidos a nuestro proyecto en página web!</p>
+</div>
+ 
+<!-- BOTONES -->
+<div class="botones">
+    <button onclick="mostrarSeccion('inicio')">Inicio</button>
+ 
+    <button onclick="mostrarSeccion('quienes')">
+        ¿Quiénes somos?
+    </button>
+ 
+    <button onclick="mostrarSeccion('objetivo')">
+        Objetivo
+    </button>
+ 
+    <button onclick="mostrarSeccion('galeria')">
+        Galería de Imágenes
+    </button>
+ 
+    <button onclick="verVideo()">
+        Ver Video
+    </button>
+ 
+    <button onclick="mostrarSeccion('presentacion')">
+        Bloc
+    </button>
+ 
+    <button onclick="mostrarSeccion('contacto')">
+        Contáctanos
+    </button>
+</div>
+ 
+<!-- INICIO -->
+<section id="inicio" class="activa">
+ 
+    <h2>Inicio</h2>
+ 
+    <img src="vidasub.jpg" class="inicio-img">
+ 
+</section>
+ 
+<!-- QUIÉNES SOMOS -->
+<section id="quienes">
+ 
+    <h2>¿Quiénes somos?</h2>
+
+ 
+    <p>
+        Como un grupo de estudiantes apasionados por el futuro de nuestro planeta,
+        buscamos despertar la conciencia colectiva sobre los desafíos ambientales
+        de nuestro país, centrando nuestros esfuerzos en la riqueza y vulnerabilidad
+        de la vida marina.
+    </p>
+
+     <img src="Imagen8.jpg" class="info-img">
+ 
+</section>
+ 
+<!-- OBJETIVO -->
+<section id="objetivo">
+ 
+    <h2>Objetivo</h2>
+
+ 
+    <p>
+        Nos dedicamos a dar voz y visibilidad a los movimientos ambientales,
+        transformando la información en una herramienta de cambio para la
+        protección de nuestro medio ambiente.
+    </p>
+
+     <img src="Imagen7.jpg" class="info-img">
+ 
+</section>
+ 
+<!-- CONTACTO -->
+<section id="contacto">
+ 
+    <h2>Contáctanos</h2>
+ 
+    <p>
+        Puedes encontrarnos en Instagram como
+        @protegiendo.a_los.mares
+    </p>
+ 
+</section>
+ 
+<!-- BLOC -->
+<section id="presentacion">
+ 
+    <h2>Bloc</h2>
+ 
+    <div class="principal">
+ 
+        <button class="boton izquierda" onclick="anteriorP()">
+            ❮
+        </button>
+ 
+        <img id="imagenPresentacion" src="p-portada.jpg">
+ 
+        <button class="boton derecha" onclick="siguienteP()">
+            ❯
+        </button>
+ 
+    </div>
+ 
+    <div class="galeria">
+        <img src="p-portada.jpg" onclick="abrirImagen(this.src)">
+        <img src="p-trata.jpg" onclick="abrirImagen(this.src)">
+        <img src="p-logros.jpg" onclick="abrirImagen(this.src)">
+        <img src="p-conseguir.jpg" onclick="abrirImagen(this.src)">
+        <img src="p-gracias.jpg" onclick="abrirImagen(this.src)">
+    </div>
+ 
+</section>
+ 
+<!-- GALERÍA -->
+<section id="galeria">
+ 
+    <h2>Galería de Imágenes</h2>
+ 
+    <div class="principal">
+ 
+        <button class="boton izquierda" onclick="anterior()">
+            ❮
+        </button>
+ 
+        <img id="imagenPrincipal" src="imagen1.jpg">
+ 
+        <button class="boton derecha" onclick="siguiente()">
+            ❯
+        </button>
+ 
+    </div>
+ 
+    <div class="galeria">
+        <img src="imagen1.jpg" onclick="abrirImagen(this.src)">
+        <img src="imagen2.jpg" onclick="abrirImagen(this.src)">
+        <img src="imagen3.jpg" onclick="abrirImagen(this.src)">
+        <img src="imagen4.jpg" onclick="abrirImagen(this.src)">
+        <img src="imagen5.jpg" onclick="abrirImagen(this.src)">
+        <img src="imagen6.jpg" onclick="abrirImagen(this.src)">
+    </div>
+ 
+</section>
+ 
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox" onclick="cerrarImagen(event)">
+ 
+    <span class="cerrar">✖</span>
+ 
+    <img id="imagenGrande">
+ 
+</div>
+ 
+<script>
+ 
+// CAMBIO DE SECCIONES
+function mostrarSeccion(id) {
+ 
+    let secciones = document.querySelectorAll("section");
+ 
+    secciones.forEach(sec => sec.classList.remove("activa"));
+ 
+    document.getElementById(id).classList.add("activa");
+}
+ 
+// CARRUSEL BLOC
+let imagenesP = [
+    "p-portada.jpg",
+    "p-trata.jpg",
+    "p-logros.jpg",
+    "p-conseguir.jpg",
+    "p-gracias.jpg"
+];
+ 
+let indiceP = 0;
+ 
+function siguienteP() {
+ 
+    indiceP = (indiceP + 1) % imagenesP.length;
+ 
+    document.getElementById("imagenPresentacion").src =
+    imagenesP[indiceP];
+}
+ 
+function anteriorP() {
+ 
+    indiceP =
+    (indiceP - 1 + imagenesP.length) % imagenesP.length;
+ 
+    document.getElementById("imagenPresentacion").src =
+    imagenesP[indiceP];
+}
+ 
+// CARRUSEL GALERÍA
+let imagenes = [
+    "imagen1.jpg",
+    "imagen2.jpg",
+    "imagen3.jpg",
+    "imagen4.jpg",
+    "imagen5.jpg",
+    "imagen6.jpg"
+];
+ 
+let indice = 0;
+ 
+function mostrarImagen() {
+ 
+    document.getElementById("imagenPrincipal").src =
+    imagenes[indice];
+}
+ 
+function siguiente() {
+ 
+    indice = (indice + 1) % imagenes.length;
+ 
+    mostrarImagen();
+}
+ 
+function anterior() {
+ 
+    indice =
+    (indice - 1 + imagenes.length) % imagenes.length;
+ 
+    mostrarImagen();
+}
+ 
+// VIDEO
+function verVideo() {
+ 
+    window.open("Sylvia Earle.mp4", "_blank");
+}
+ 
+// LIGHTBOX
+function abrirImagen(src) {
+ 
+    document.getElementById("imagenGrande").src = src;
+ 
+    document.getElementById("lightbox")
+    .classList.add("activo");
+}
+ 
+function cerrarImagen(e) {
+ 
+    if (
+        e.target.id === "lightbox" ||
+        e.target.classList.contains("cerrar")
+    ) {
+ 
+        document.getElementById("lightbox")
+        .classList.remove("activo");
+    }
+}
+ 
+document.addEventListener("keydown", function(e) {
+ 
+    if (e.key === "Escape") {
+ 
+        document.getElementById("lightbox")
+        .classList.remove("activo");
+    }
+});
+ 
+</script>
+ 
+</body>
+</html>
